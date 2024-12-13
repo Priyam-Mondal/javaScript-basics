@@ -61,13 +61,21 @@ const course = {
     courseInstructor: "priyam"
 }
 
+//suppose we want to use course.courseInstructor multiple times, then writing course.courseInstructor again
+//and again is redundent.
 // course.courseInstructor
 
+
+//so destructure required value of the object and give it an alias
+//here, destructuring courseInstructor and aliasing as instructor
 const {courseInstructor: instructor} = course
+
 
 console.log(courseInstructor);
 // console.log(instructor);
 
+
+//json format
 // {
 //     "name": "priyam",
 //     "coursename": "hello js users",
