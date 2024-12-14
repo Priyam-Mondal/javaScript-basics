@@ -1,0 +1,69 @@
+/* Centering the container */
+body {
+    display: flex; /* Enable Flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full screen height */
+    background-color: #181818; /* Light background to see the container better */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 575px;
+    height: 825px;
+    background-color: #ff9a34;
+    padding-left: 30px;
+    border-radius: 15px; /* Optional: smooth corners for better design */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Optional: for better visuals */
+}
+
+#height, #weight {
+    width: 150px;
+    height: 25px;
+    margin-top: 30px;
+}
+
+.results {
+    font-size: 30px;
+    font-weight:bold;
+    color: rgb(255, 255, 255);
+}
+
+button {
+    width: 150px;
+    height: 35px;
+    margin-left: 90px;
+    margin-top: 25px;
+    background-color: #fff;
+    padding: 1px 30px;
+    border-radius: 8px;
+    color: #212121;
+    text-decoration: none;
+    border: 2px solid #212121;
+    text-align: center;
+    font-size: 25px;
+}
+
+h1 {
+    padding-left: 15px;
+    padding-top: 25px;
+}
+
+
+.weight-guide {
+    background-color: #b86e00;
+    padding: 15px;
+    border-radius: 15px;
+    color: #fff;
+    text-align: center;
+    width: 100%; /* Takes full width of container */
+    max-width: 500px; /* Restricts it from being too wide */
+    margin: 0 auto; /* Centers it horizontally */
+    box-sizing: border-box; /* Ensures padding is included in width */
+    margin-top: 40%;
+}
+
+.weight-guide p {
+    margin: 10px 0; /* Instead of 15px margin, reduce it to avoid content shift */
+}
