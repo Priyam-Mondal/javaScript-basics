@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+
+<script>
+
+    //not a proper way to add event
+    document.querySelector('#owl').onclick = () => {
+        alert("owl clicked");
+    };
+
+    // attachEvent()
+    // jQuery - on
+
+    //++++++++++++ event properties we have to study +++++++++++++++
+    // type, timestamp, preventDeafult
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+
+    // best approach
+    document.querySelector('#owl').addEventListener('click', (e) => {
+        console.log(e);
+    }, false);
+    // event propagation(3rd parameter) : false = event bubbling (bottom-up)
+    //                                    true = event capturing (toop-down)
+
+
+    document.querySelector('#images').addEventListener('click', (e) => {
+        console.log("clicked inside the ul");
+    }, false);
+
+    document.querySelector('#owl').addEventListener('click', (e) => {
+        console.log("owl clicked");
+    }, false);
+
+    // when click on owl image it will display "owl clicked" then "clicked inside the ul".
+    // owl image is part of list also. As even propagation is false. it is bubbling bottom-up.
+
+    // If event propagation was true, it will display "clicked inside the ul" then "owl clicked".
+    // As event capturing is top-down.
+
+    
+    // to stop event propagation, use event.stopPropagation()
+    document.querySelector('#owl').addEventListener('click', (e) => {
+        console.log("owl clicked");
+        e.stopPropagation();
+    }, false);
+
+
+    document.querySelector('#google').addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+    }, false);
+    
+
+    document.querySelector('#images').addEventListener('click', (e) => {
+        console.log(e.target.parentNode);
+        // let removeIt = e.target.parentNode;
+        // removeIt.remove();   // remove event target
+
+        // now if we click on list item other than images, whole list will be removed
+        // we want to restrict that
+        if(e.target.tagName === 'IMG') {
+            let removeIt = e.target.parentNode;
+            removeIt.remove();
+        }
+
+        //another way of removing it
+        // removeIt.parentNode is "ul". Then remove specific "li" from the list.
+        // removeIt.parentNode.removeChild(removeIt);
+    }, false);
+
+
+</script>
+
+</html>
