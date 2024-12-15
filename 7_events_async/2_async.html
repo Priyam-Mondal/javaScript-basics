@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async in JS</title>
+</head>
+<body style="background-color: rgb(45, 45, 46); color: aliceblue;">
+    <h1>2_Async in JS</h1>
+    <button id="stop">Stop</button>
+</body>
+
+<script>
+    // setTimeout(() => {
+    //     console.log("Priyam");
+    // }, 2000);
+
+    // const sayName = () => {
+    //     console.log("Priyam");
+    // };
+
+    const changeText = () => {
+        document.querySelector('h1').innerText = "Hello World";
+    };
+    const changeH1 = setTimeout(changeText, 2000);
+
+    // clearTimeout()
+    // this function takes reference of specific setTimeout we want to stop.
+    // so we need to save setTimeout reference in variable
+
+    // in this example, if user click stop button, setTimeout on changeText should stop
+
+    document.querySelector('#stop').addEventListener('click', () => {
+        clearTimeout(changeH1);
+        console.log("Stopped");
+    });
+</script>
+
+</html>

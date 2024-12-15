@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async in JS</title>
+</head>
+<body style="background-color: rgb(45, 45, 46); color: aliceblue;">
+    <h1>3_Async in JS</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+
+<script>
+    const sayDate = (str) => {
+        console.log(str, Date.now());
+    };
+
+    // setInterval(callback, delay, arg1, arg2, ...)
+    // arg1, arg2, ... are optional arguments to pass to callback function
+
+    // const dateInterval = setInterval(sayDate, 1000, "hi");
+
+    // in this example if user click start then only it should display
+    // and when click stop, then it should stop displaying in interval
+    //so we have to add this setInterval in eventListener
+
+    let dateInterval;
+
+    document.querySelector('#start').addEventListener('click', () => {
+        dateInterval = setInterval(sayDate, 1000, "hi");
+    });
+
+
+   // add eventListener for stop also
+   document.querySelector('#stop').addEventListener('click', () => {
+        clearInterval(dateInterval);
+        dateInterval = null;
+   });
+
+</script>
+
+</html>
